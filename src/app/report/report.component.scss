@@ -1,0 +1,19 @@
+table {
+    tr {
+        td:nth-child(4) {
+            border-top: hidden;
+            border-bottom: hidden;
+        }
+    }
+}
+
+.button-row {
+    display: flex;
+    width: 490px;
+    height: 52px;
+    justify-content: flex-end;
+}
+
+::ng-deep mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
+    background-color: transparent;
+}

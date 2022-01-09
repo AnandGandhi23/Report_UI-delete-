@@ -1,0 +1,173 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<div class="d-flex">
+    <div class="p-5">
+        <div class="d-flex">
+            <div class="mr-2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                    <input matStartDate formControlName="start" placeholder="Start date" (dateChange)="dateChanged()">
+                    <input matEndDate formControlName="end" placeholder="End date" (dateChange)="dateChanged()">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                
+                    <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                    <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                </mat-form-field>    
+            </div>
+            <div class="mr-2">
+                <mat-form-field appearance="fill">
+                    <mat-label>Select a year</mat-label>
+                    <mat-select [(value)]="selectedYear" (selectionChange)="yearChanged()" name="year">
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{year}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="button-row">
+                <button mat-raised-button color="primary" (click)="exportexcel()">Download to Excel</button>
+            </div>
+        </div>
+        <table id="reportTable" class="table table-bordered">
+            <tr>
+                <td></td>
+                <td>{{selectedDate}}</td>
+                <td>% of income</td>
+                <td></td>
+                <td>{{selectedYear}} (Annualized)</td>
+                <td>% of income</td>
+            </tr>
+            <tr>
+                <td>Gross Sales</td>
+                <td>
+                    <span *ngIf="reportData.grossSale < 0">(</span>
+                        {{(Math.abs(reportData.grossSale))|| 0 | currency}}
+                    <span *ngIf="reportData.grossSale < 0">)</span>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.grossSale < 0">(</span>
+                        {{(Math.abs(reportDataByYear.grossSale))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.grossSale < 0">)</span>
+                </td>
+                <td>{{(reportDataByYear.grossSale/reportDataByYear.totalIncome) | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Returns</td>
+                <td>
+                    <span *ngIf="reportData.returnSale < 0">(</span>
+                        {{(Math.abs(reportData.returnSale))|| 0 | currency}}
+                    <span *ngIf="reportData.returnSale < 0">)</span>
+                </td>
+                <td>{{reportData.returnSale/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.returnSale < 0">(</span>
+                        {{(Math.abs(reportDataByYear.returnSale))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.returnSale < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.returnSale/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Cancels</td>
+                <td>
+                    <span *ngIf="reportData.cancelIncome < 0">(</span>
+                        {{(Math.abs(reportData.cancelIncome))|| 0 | currency}}
+                    <span *ngIf="reportData.cancelIncome < 0">)</span>
+                </td>
+                <td>{{reportData.cancelIncome/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.cancelIncome < 0">(</span>
+                        {{(Math.abs(reportDataByYear.cancelIncome))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.cancelIncome < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.cancelIncome/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Total Income</td>
+                <td>
+                    <span *ngIf="reportData.totalIncome < 0">(</span>
+                        {{(Math.abs(reportData.totalIncome))|| 0 | currency}}
+                    <span *ngIf="reportData.totalIncome < 0">)</span>
+                </td>
+                <td>{{reportData.totalIncome/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.totalIncome < 0">(</span>
+                        {{(Math.abs(reportDataByYear.totalIncome))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.totalIncome < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.totalIncome/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>COGS</td>
+                <td>
+                    <span *ngIf="reportData.cogs < 0">(</span>
+                        {{(Math.abs(reportData.cogs))|| 0 | currency}}
+                    <span *ngIf="reportData.cogs < 0">)</span>
+                </td>
+                <td>{{reportData.cogs/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.cogs < 0">(</span>
+                        {{(Math.abs(reportDataByYear.cogs))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.cogs < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.cogs/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Commissions - Consultants</td>
+                <td>
+                    <span *ngIf="reportData.commissionConsultant < 0">(</span>
+                        {{(Math.abs(reportData.commissionConsultant))|| 0 | currency}}
+                    <span *ngIf="reportData.commissionConsultant < 0">)</span>
+                </td>
+                <td>{{reportData.commissionConsultant/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.commissionConsultant < 0">(</span>
+                        {{(Math.abs(reportDataByYear.commissionConsultant))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.commissionConsultant < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.commissionConsultant/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Commissions - PCC</td>
+                <td>
+                    <span *ngIf="reportData.commissionPCC < 0">(</span>
+                        {{(Math.abs(reportData.commissionPCC))|| 0 | currency}}
+                    <span *ngIf="reportData.commissionPCC < 0">)</span>
+                </td>
+                <td>{{reportData.commissionPCC/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.commissionPCC < 0">(</span>
+                        {{(Math.abs(reportDataByYear.commissionPCC))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.commissionPCC < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.commissionPCC/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>Commissions - commissionTelemarketing</td>
+                <td>
+                    <span *ngIf="reportData.commissionTelemarketing < 0">(</span>
+                        {{(Math.abs(reportData.commissionTelemarketing))|| 0 | currency}}
+                    <span *ngIf="reportData.commissionTelemarketing < 0">)</span>
+                </td>
+                <td>{{reportData.commissionTelemarketing/reportData.totalIncome | percent: '1.2-2'}}</td>
+                <td></td>
+                <td>
+                    <span *ngIf="reportDataByYear.commissionTelemarketing < 0">(</span>
+                        {{(Math.abs(reportDataByYear.commissionTelemarketing))|| 0 | currency}}
+                    <span *ngIf="reportDataByYear.commissionTelemarketing < 0">)</span>
+                </td>
+                <td>{{reportDataByYear.commissionTelemarketing/reportDataByYear.totalIncome | percent: '1.2-2'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
