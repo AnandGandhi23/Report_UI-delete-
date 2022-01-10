@@ -107,7 +107,7 @@ export class ReportComponent implements OnInit {
     const startDateYear = new Date(startDate).getFullYear().toString().substr(2, 2);
     const endDateYear = new Date(endDate).getFullYear().toString().substr(2, 2);
 
-    this.selectedDate = `${startDateMonth} ${startDateYear}-${endDateMonth} ${endDateYear}`;
+    this.selectedDate = `${startDateMonth} ${startDateYear} - ${endDateMonth} ${endDateYear}`;
   }
 
   exportexcel(): void
@@ -121,7 +121,7 @@ export class ReportComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
  
     /* save to file */  
-    XLSX.writeFile(wb, `Report_${this.selectedDate}.xlsx`);
+    XLSX.writeFile(wb, `Exhibit B_${this.selectedDate}.xlsx`);
  
   }
 
