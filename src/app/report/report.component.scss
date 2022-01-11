@@ -1,10 +1,19 @@
 table {
     tr {
+        td {
+            span {
+                display: inline-block;
+            }
+        }
         td:nth-child(4) {
             border-top: hidden;
             border-bottom: hidden;
         }
     }
+}
+
+.amount::first-letter {
+    padding-right: 0.3em;
 }
 
 .button-row {
