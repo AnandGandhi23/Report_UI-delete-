@@ -28,7 +28,7 @@
                 </mat-form-field>
             </div>
             <div class="button-row">
-                <button mat-raised-button color="primary" (click)="exportexcel()">Download to Excel</button>
+                <button mat-raised-button color="primary" class="mr-2" (click)="exportexcel()">Download to Excel</button>
             </div>
         </div>
         <table id="reportTable" class="table table-bordered">
@@ -60,84 +60,84 @@
                     <td>
                         <span class="amount">{{(Math.abs(reportData.returnSale))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.returnSale/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.returnSale/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.returnSale))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.returnSale/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.returnSale/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Cancels</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.cancelIncome))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.cancelIncome/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.cancelIncome/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.cancelIncome))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.cancelIncome/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.cancelIncome/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Total Income</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.totalIncome))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.totalIncome/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.totalIncome/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.totalIncome))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.totalIncome/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.totalIncome/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>COGS</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.cogs))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.cogs/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.cogs/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.cogs))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.cogs/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.cogs/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - Consultants</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.commissionConsultant))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.commissionConsultant/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.commissionConsultant/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionConsultant))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.commissionConsultant/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.commissionConsultant/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - PCC</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.commissionPCC))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.commissionPCC/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.commissionPCC/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionPCC))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.commissionPCC/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.commissionPCC/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - Telemarketing</td>
                     <td>
                         <span class="amount">{{(Math.abs(reportData.commissionTelemarketing))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportData.commissionTelemarketing/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportData.commissionTelemarketing/reportData.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionTelemarketing))|| 0 | currency}}</span>
                     </td>
-                    <td>{{(reportDataByYear.commissionTelemarketing/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
+                    <td>{{Math.abs((reportDataByYear.commissionTelemarketing/reportDataByYear.totalIncome)) || 0 | percent: '1.2-2'}}</td>
                 </tr>
             </tbody>
         </table>
