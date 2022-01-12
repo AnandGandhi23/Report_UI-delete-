@@ -46,128 +46,96 @@
                 <tr>
                     <td><b>Gross Sales</b></td>
                     <td>
-                        <span *ngIf="reportData.grossSale < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.grossSale))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.grossSale < 0">)</span>
                     </td>
                     <td></td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.grossSale < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.grossSale))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.grossSale < 0">)</span>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Returns</td>
                     <td>
-                        <span *ngIf="reportData.returnSale < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.returnSale))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.returnSale < 0">)</span>
                     </td>
                     <td>{{(reportData.returnSale/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.returnSale < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.returnSale))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.returnSale < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.returnSale/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Cancels</td>
                     <td>
-                        <span *ngIf="reportData.cancelIncome < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.cancelIncome))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.cancelIncome < 0">)</span>
                     </td>
                     <td>{{(reportData.cancelIncome/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.cancelIncome < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.cancelIncome))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.cancelIncome < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.cancelIncome/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Total Income</td>
                     <td>
-                        <span *ngIf="reportData.totalIncome < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.totalIncome))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.totalIncome < 0">)</span>
                     </td>
                     <td>{{(reportData.totalIncome/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.totalIncome < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.totalIncome))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.totalIncome < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.totalIncome/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>COGS</td>
                     <td>
-                        <span *ngIf="reportData.cogs < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.cogs))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.cogs < 0">)</span>
                     </td>
                     <td>{{(reportData.cogs/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.cogs < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.cogs))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.cogs < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.cogs/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - Consultants</td>
                     <td>
-                        <span *ngIf="reportData.commissionConsultant < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.commissionConsultant))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.commissionConsultant < 0">)</span>
                     </td>
                     <td>{{(reportData.commissionConsultant/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.commissionConsultant < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionConsultant))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.commissionConsultant < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.commissionConsultant/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - PCC</td>
                     <td>
-                        <span *ngIf="reportData.commissionPCC < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.commissionPCC))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.commissionPCC < 0">)</span>
                     </td>
                     <td>{{(reportData.commissionPCC/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.commissionPCC < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionPCC))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.commissionPCC < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.commissionPCC/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td>Commissions - Telemarketing</td>
                     <td>
-                        <span *ngIf="reportData.commissionTelemarketing < 0">(</span>
                         <span class="amount">{{(Math.abs(reportData.commissionTelemarketing))|| 0 | currency}}</span>
-                        <span *ngIf="reportData.commissionTelemarketing < 0">)</span>
                     </td>
                     <td>{{(reportData.commissionTelemarketing/reportData.totalIncome) || 0 | percent: '1.2-2'}}</td>
                     <td></td>
                     <td>
-                        <span *ngIf="reportDataByYear.commissionTelemarketing < 0">(</span>
                         <span class="amount">{{(Math.abs(reportDataByYear.commissionTelemarketing))|| 0 | currency}}</span>
-                        <span *ngIf="reportDataByYear.commissionTelemarketing < 0">)</span>
                     </td>
                     <td>{{(reportDataByYear.commissionTelemarketing/reportDataByYear.totalIncome) || 0 | percent: '1.2-2'}}</td>
                 </tr>
